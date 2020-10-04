@@ -1,11 +1,20 @@
-
 %header.pcHeader
-  =render 'header'
+  =render 'items/header'
 
-.main
-  =render 'upper_main'
-  =render 'middle_main'
-  =render 'under_main'
+.mypage
+  .mypage__content
+    .mypage__content__user
+      = link_to '#', class: "mypage__content__user__icon" do
+        .figure
+        %h2
+          = current_user.destination.nickname
+        .mypage-user-number
+          評価
+          %span 12
+          出品数
+          %span 12
+  .mypage__bottom
+    = render 'mypage__bottom'
 
 %aside.appBanner
   .inner
@@ -19,11 +28,5 @@
       =link_to "#", class: "gBtn" do
         = image_tag "icon/google-play-badge.png"
 
-.home-footer
-  = render 'top-footer'
-  
-=link_to "items/new" do
-  .purchaseBtn
-    %span.purchaseBtn__text
-      出品する
-    =image_tag 'icon/icon_camera.png' 
+%footer.home-footer
+  = render 'items/top-footer'

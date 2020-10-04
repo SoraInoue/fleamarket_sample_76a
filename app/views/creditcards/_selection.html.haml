@@ -1,0 +1,18 @@
+.mypage__content__payment
+  %h3 支払い方法
+.mypage__content__selection
+  .mypage__content__selection__box
+    %h4 クレジットカード
+    %ul
+      %li
+        %p
+          = "**** **** **** " + @creditcard_information.last4
+        %p
+          - exp_month = @creditcard_information.exp_month.to_s
+          - exp_year = @creditcard_information.exp_year.to_s.slice(2,3)
+          = "有効期限  " + exp_month + "/" + exp_year
+      = form_tag(delete_creditcards_path, method: "POST", id: 'charge-form', name: "inputForm") do
+        %input{ type: "hidden", name: "card_id", value: "" }
+        %button 削除する
+    .change-creditcard
+      = link_to "新規カードを登録する", new_creditcard_path

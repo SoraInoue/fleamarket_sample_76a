@@ -1,0 +1,88 @@
+.clearfix::after{
+  content: "";
+  clear: both;
+  display: block;
+}
+
+.search{
+  margin: 40px auto 0;
+  width: 1020px;
+  height: 100%;
+  .l-content{
+    float: right;
+    width: 800px;
+  }
+}
+
+    .foundMainright{
+      background-repeat: no-repeat;
+      margin: 0 0 0 auto;
+      &__head{
+        margin: 16px 0 8px;
+        font-size: 18px;
+        font-weight: 600;
+        &__text{
+          margin: 0 0 0 4px;
+          font-size: 16px;
+          font-weight: 400;
+        }
+      }
+    }
+    
+        .result{
+          margin: 16px 0;
+          font-size: 12px;
+          color: #888;
+        }
+
+    .itemsbox-content{
+      margin: 0 auto;
+      width: auto;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      padding-bottom: 20px;
+      .itemsbox{
+        width: 160px;
+        margin: 0 20px 20px 0;
+        position: relative;
+        float: left;
+        &__foundgoods{
+          display: block;
+          color: #333;
+          text-decoration: none;
+          &__image{
+            width: 160px;
+            height: 160px;
+            &__itemsphoto{
+              position: absolute;
+              top: 0;
+              right: 0;
+              bottom: 0;
+              left: 0;
+              z-index: 1;
+              width: 100%;
+          }
+        }
+      }
+    }
+    }
+    
+    
+    .itemsbox__body{
+      position: relative;
+      height: 58px;
+      padding: 8px 12px;
+      .found-name{
+        font-size: 14px;
+        overflow: hidden;
+        position: relative;
+        font-weight: 600;
+        height: 3em;
+        line-height: 1.5;
+        word-break: break-word;
+        white-space: normal;
+      }
+    }
+
+

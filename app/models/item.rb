@@ -28,4 +28,11 @@ class Item < ApplicationRecord
       errors.add(:image, '画像がありません')
     end
   end
+
+  def self.search(search)
+    if search
+      return Item.all unless search
+      Item.where('name LIKE(?)',"%#{search}%")
+    end
+  end
 end

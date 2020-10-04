@@ -5,22 +5,40 @@
 ## usersテーブル
 |Column|Type|Options|
 |------|----|-------|
-|nickname|string|null: false|
-|password|string|null: false|
-|icon|string|null: false|
-|email|string|null: false|
 |family_name|string|null: false|
 |first_name|string|null: false|
 |family_name_kana|string|null: false|
 |first_name_kana|string|null: false|
-|phone_number|string|null: false|
 |birthday|integer|null: false|
-|introduction|text||
+|email|string|null: false|
+|password|string|null: false|
+|phone_number|string||
 ### Association
 - has_many :items, dependent: :destroy
 - has_many :comments, dependent: :destroy
 - has_many :favorites, dependent: :destroy
 - has_many :reviews, dependent: :destroy
+- has_one :destination, inverse_of: :user, dependent: :destroy
+- accepts_nested_attributes_for :destination
+
+## destinationsテーブル
+|Column|Type|Options|
+|------|----|-------|
+|destination_family_name|string|null: false|
+|destination_first_name|string|null: false|
+|destination_family_name_kana|string|null: false|
+|destination_first_name_kana|string|null: false|
+|postal_code|string|null: false|
+|prefecture_id|integer|null: false|
+|city|string|null: false|
+|street_block|string|null: false|
+|mansion_name|string||
+|user_id|integer|null: false|
+|nickname|string|null: false|
+|icon|string||
+|introduction|text||
+### Association
+-  belongs_to :user, inverse_of: :destination
 
 ## itemsテーブル
 |Column|Type|Options|
@@ -59,6 +77,10 @@
 |------|----|-------|
 |user_id|string|null: false|
 |token_id|string|null: false|
+|user_id|string|null: false|
+|card_id|string|null: false|
+|customer_id|string|null: false|
+
 ### Association
 - belongs_to :user
 

@@ -1,21 +1,21 @@
 class Destination < ApplicationRecord
-  belongs_to :user
+  belongs_to :user, inverse_of: :destination
 
-  with_options presence: true do
-    validates :family_name
-    validates :family_name_kana
-    validates :first_name
-    validates :first_name_kana
-    validates :postalcode
-    validates :prefecture
-    validates :city
-    validates :address
-    validates :prefecture_id
-  end
+  validates :destination_family_name, presence: true,
+  format: { with: /[^-｡-ﾟ]+/}
+  validates :destination_first_name, presence: true,
+  format: { with: /[^-｡-ﾟ]+/}
+  validates :destination_family_name_kana, presence: true,
+  format: { with: /[^-｡-ﾟ]+/}
+  validates :destination_first_name_kana, presence: true,
+  format: { with: /[^-｡-ﾟ]+/}
+  validates :postal_code, presence: true
+  validates :prefecture_id, presence: true
+  validates :city, presence: true
+  validates :street_block, presence: true
+  validates :nickname, presence: true
 
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to_active_hash :prefecture
 
 end
-
-  

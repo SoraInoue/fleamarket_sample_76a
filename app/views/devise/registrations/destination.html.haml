@@ -1,0 +1,89 @@
+%header.pcHeader
+  =render 'items/header'
+
+.mypage
+  .mypage__content
+    .mypage__content__destination
+      %h3 発送元・お届け先住所変更
+      = form_with model: @user, url: user_registration_path, method: "PATCH", html: {class: "Form"}, local: true do |f|
+        .address-form
+          = f.fields_for :destination do |destination|
+            .field
+              .field-label
+                = destination.label '氏名（全角）'
+                %span.field-required 必須
+              .field-input_flex
+                .field-input
+                  = destination.text_field :destination_family_name, placeholder: "(例)山田", value: current_user.destination.destination_family_name
+                .field-input.leftbox
+                  = destination.text_field :destination_first_name, placeholder: "太郎", value: current_user.destination.destination_first_name
+            .field
+              .field-label
+                = destination.label '氏名カナ（全角）'
+                %span.field-required 必須
+              .field-input_flex
+                .field-input
+                  = destination.text_field :destination_family_name_kana, placeholder: "(例)ヤマダ", value: current_user.destination.destination_family_name_kana
+                .field-input.leftbox
+                  = destination.text_field :destination_first_name_kana, placeholder: "タロウ", value: current_user.destination.destination_first_name_kana
+
+            .field
+              .field-label
+                =destination.label '郵便番号'
+                %span.field-required 必須
+              .field-input
+                = destination.text_field :postal_code, placeholder: "（例）123-4567", value: current_user.destination.postal_code
+
+            .field
+              .field-label
+                = destination.label '都道府県（プルダウンからの選択）'
+                %span.field-required 必須
+              .field-input
+                = destination.collection_select :prefecture_id, Prefecture.all, :id, :name, { selected: current_user.destination.prefecture_id }
+
+            .field
+              .field-label
+                = destination.label '市区町村'
+                %span.field-required 必須
+              .field-input
+                = destination.text_field :city, placeholder: "（例）横浜市緑区", value: current_user.destination.city
+
+            .field
+              .field-label
+                = destination.label '番地'
+                %span.field-required 必須
+              .field-input
+                = destination.text_field :house_number, placeholder: "（例）青山１−１−１", value: current_user.destination.street_block
+
+            .field
+              .field-label
+                = destination.label 'マンション・ビル名'
+              .field-input
+                = destination.text_field :building_name, placeholder: "（例）柳ビル 103", value: current_user.destination.mansion_name
+
+          .field
+            .field-label
+              = f.label '電話番号'
+            .field-input
+              = f.text_field :phone_number, placeholder: "（例）123-4567-8910", value: current_user.phone_number
+
+          .actions
+            = f.submit "変更する", class: 'btn'
+            
+  .mypage__bottom
+    = render 'mypage__bottom'
+
+%aside.appBanner
+  .inner
+    %h2.inner__title
+      だれでもかんたん、人生を変えるフリマアプリ
+    %p.inner__text
+      今すぐ無料ダウンロード
+    .innner__icon        
+      =link_to "#", class: "aBtn" do
+        = image_tag 'icon/Download_on_the_App_Store_Badge_JP_blk_.png'
+      =link_to "#", class: "gBtn" do
+        = image_tag "icon/google-play-badge.png"
+
+%footer.home-footer
+  = render 'items/top-footer'

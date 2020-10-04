@@ -1,0 +1,171 @@
+/header
+%header.pcHeader
+  =render 'items/header'
+
+/パンくずは追加実装
+
+/main
+.main
+  .showMain
+    .contentRight
+      .topContent
+        .itembox
+          %h2.itembox__name
+            =@item.name
+          .itembox__body
+            %ul
+              %li
+                = image_tag @item.images[0]
+                -if @item.images.length > 5
+                  %ul
+                    -for i in 0..4
+                      %li
+                        = image_tag @item.images[i]
+                  %ul
+                    -@item.images.each.with_index do |image,count|
+                      -if count < 5
+                      -else
+                        %li
+                          = image_tag image
+                -else
+                  %ul
+                    -@item.images.each do |image|
+                      %li
+                        =image_tag image
+
+          .itembox__price
+            %span
+              ¥
+              =@item.price
+          .itembox__price-detail
+            %span
+              （税込）
+            %span
+              送料込み
+          -if user_signed_in? && current_user.id != @item.seller_id
+            .itembtnarea
+              %button.buyBtn{type: "submit",name: "button"}
+                = link_to "商品購入", creditcard_path
+          - else
+          -if user_signed_in? && current_user.id == @item.seller_id
+            .itembtnarea__seller
+              %button.editBtn{type: "submit",name: "button"}
+                = link_to edit_item_path(@item) do
+                  編集
+              %button.deleteBtn
+                = link_to '削除',item_path, method: :delete, data: { confirm: '削除してよろしいですか?' }
+          -else
+          .itemdetail
+            =@item.introduction
+          
+          .table
+            %table
+              %tbody
+                %tr
+                  %th
+                    出品者
+                  %td
+                    =@destination.nickname
+                %tr
+                  %th
+                    カテゴリー
+                  %td
+                    %a
+                      = link_to '#' do
+                        =@item.genre.root.name
+                        %br
+                        =@item.genre.parent.name
+                        %br
+                        =@item.genre.name
+                %tr
+                  %th
+                    ブランド
+                  %td
+                    =@item.brand
+                %tr
+                  %th
+                    商品の状態
+                  %td
+                    =@item.condition.condition
+                %tr
+                  %th
+                    配送料の負担
+                  %td
+                    =@item.delivery_fee.payer
+                %tr
+                  %th
+                    発送元の地域
+                  %td
+                    %a
+                      = link_to '#' do
+                        =@item.pref.name
+                %tr
+                  %th
+                    発送日の目安
+                  %td
+                    =@item.day.day
+          .option
+            %ul
+              %li.option__btn
+                %i.fa.fa-star
+                  お気に入り
+            %ul.optional
+              %li.optionalBtn
+                %a
+                  %i.fa.fa-flag
+                  = link_to "不適切な商品の通報", "#"
+      
+          
+          .commentBox
+            - if user_signed_in?
+              %ul.commentContets
+                = form_with model:[@item, @comment] ,class:"textarea", local: true do |f|
+                  = f.text_area :comment,id: "comment_body",rows: "2",placeholder: "コメントする"
+                  = f.submit "コメントする",class:"commentBtn"
+            - else
+              %strong
+                %p
+                  ※※※ コメントの投稿には新規登録/ログインが必要です ※※※
+             
+
+          .comments
+            %h4 ＜コメント一覧＞
+            - if @comments
+              - @comments.each do |comment|
+                - if comment.user_id == current_user.id
+                  %p
+                    %strong
+                      = link_to comment.user.nickname
+                    %span :
+                    = comment.comment
+
+      %ul.links
+        %li.test-link
+          %a
+            %i.fa.fa-angle-left
+            = link_to "前の商品", "#"
+        %li
+          %a
+            = link_to "後ろの商品", "#"
+            %i.fa.fa-angle-right
+
+      .relatedItems
+        %a
+          = link_to "レディースをもっと見る", "#"
+
+
+/footer
+%aside.appBanner
+  .inner
+    %h2.inner__title
+      だれでもかんたん、人生を変えるフリマアプリ
+    %p.inner__text
+      今すぐ無料ダウンロード
+    .innner__icon        
+      =link_to "#", class: "aBtn" do
+        = image_tag 'icon/Download_on_the_App_Store_Badge_JP_blk_.png'
+      =link_to "#", class: "gBtn" do
+        = image_tag "icon/google-play-badge.png"
+
+.home-footer
+  = render 'items/top-footer'

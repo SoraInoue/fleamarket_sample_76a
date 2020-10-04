@@ -1,11 +1,14 @@
-
 %header.pcHeader
-  =render 'header'
+  =render 'items/header'
 
-.main
-  =render 'upper_main'
-  =render 'middle_main'
-  =render 'under_main'
+.mypage
+  .mypage__content
+    .mypage__content__logout
+      .mypage__content__logout__form
+        = link_to "ログアウト", users_sign_out_path, class: "mypage__content__logout__form__item"
+
+  .mypage__bottom
+    = render 'mypage__bottom'
 
 %aside.appBanner
   .inner
@@ -18,12 +21,6 @@
         = image_tag 'icon/Download_on_the_App_Store_Badge_JP_blk_.png'
       =link_to "#", class: "gBtn" do
         = image_tag "icon/google-play-badge.png"
-
+        
 .home-footer
-  = render 'top-footer'
-  
-=link_to "items/new" do
-  .purchaseBtn
-    %span.purchaseBtn__text
-      出品する
-    =image_tag 'icon/icon_camera.png' 
+  = render 'items/top-footer'

@@ -8,10 +8,14 @@
 @import "toppage/under_main";
 @import "toppage/footer";
 @import "toppage/btn";
-@import "purchase";
+@import "purchase/purchase";
+@import "purchase/new";
 @import "modules/user";
 @import "config/reset";
 @import "items/new.scss";
+@import "items/show.scss";
+@import "items/edit.scss";
+@import "items/search.scss";
 @import "config/colors";
 @import "config/font-size";
 @import "modules/flash";

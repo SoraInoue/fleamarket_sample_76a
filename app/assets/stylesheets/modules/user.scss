@@ -20,6 +20,8 @@
 
   &__inner {
     width: 680px;
+    min-height: 1800px;
+    height: auto !important;
     height: 1800px;
     margin: 10px auto;
     padding: 60px;
@@ -65,6 +67,7 @@
       width: 200px;
       height: 48px;
     }
+
     .field-label {
       margin-left: 180px;
       padding: 10px 0;
@@ -114,8 +117,12 @@
       }
     }
 
-    .year,.month,.day{
+    .year{
       width: 10%;
+      height: 30px;
+     }
+    .month,.day{
+      width: 8%;
       height: 30px;
      }
 
@@ -140,7 +147,6 @@
 
   input[type='submit'] {
     float: left;
-    margin-top: 20px;
     color: #fff;
     background-color: #38aef0;
   }
@@ -219,3 +225,465 @@
     font-size: 13px;
   }
 }
+.mypage {
+  display: block;
+  height: 1100px;
+  padding: 50px;
+  margin: 40px auto 0;
+  background-color: rgb(239, 241, 241);
+  &__content {
+    float: right;
+    margin-top: 16px;
+    width: 800px;
+    background-color: white;
+    &__user {
+      position: relative;
+      height: 200px;
+      padding: 20px;
+      margin: 0 auto;
+      text-align: center;
+      &__icon {
+        display: block;
+        position: absolute;
+        top: 30%;
+        left: 0;
+        right: 0;
+        color: #333;
+        .figure {
+          overflow: hidden;
+          width: 60px;
+          height: 60px;
+          margin: 0 auto;
+          border-radius: 50%;
+        }
+        .h2 {
+          margin: 8px 0 0;
+          font-size: 14px;
+        }
+        .mypage-user-number {
+          .span {
+            display: inline-block;
+            font-size: 14px;
+          }
+        }
+      }
+    }
+    &__logout {
+      height: 150px;
+      padding: 20px;
+      margin: 0 auto;
+      text-align: center;
+      display: flex;
+      justify-content: center;
+      position: relative;
+      &__form {
+        width: 50%;
+        height: 40%;
+        margin: 0 auto;
+        background-color: #3CCACE;
+        display: flex;
+        justify-content: center;
+        align-content: center;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        &__item {
+          color: white;
+          margin-top: 25px;
+        }
+      }
+    }
+    &__card {
+      padding: 30px;
+      border-bottom: 1px solid rgb(245, 245, 245);
+      h3 {
+        letter-spacing: 3px;
+        font-size: 30px;
+        font-weight: 600;
+        text-align: center;
+      }
+      &__info {
+        padding: 50px;
+        .field {
+          margin-bottom: 10px;
+          
+          select {
+            width: 200px;
+            height: 48px;
+          }
+          .field-label {
+            margin-left: 180px;
+            padding: 10px 0;
+            letter-spacing: 1px;
+            font-size: 14px;
+            font-weight: bold;
+            i {
+              font-size: 11px;
+            }
+          }
+      
+          .field-text {
+            width: 70%;
+            border-style: solid;
+            border-width: 0;
+          }
+      
+          .field-required {
+            margin: 0 0 0 8px;
+            padding: 2px 4px;
+            border-radius: 2px;
+            color: #fff;
+            font-size: 12px;
+            vertical-align: top;
+            background: #ea352d;
+          }
+      
+          .field-input {
+            text-align: center;
+            input {
+              width: 40%;
+              padding: 10px;
+              letter-spacing: 1px;
+            }
+          }
+      
+          .field-input_flex {
+            display: flex;
+            justify-content: center;
+            .flex-input {
+              width: 115px;
+              padding: 10px;
+              letter-spacing: 1px;
+              #exp_month {
+                width: 125px;
+              }
+            }
+            .leftbox{
+              margin-left: 15px;
+              padding: 10px;
+              #exp_year {
+                width: 125px;
+              }
+            }
+          }
+      
+        }
+      
+        .actions {
+            margin-top: 50px;
+            margin-left: 230px;
+           .btn {
+            display: inline-block;
+            height: 50px;
+            padding: 0 80px;
+            line-height: 50px;
+            letter-spacing: 1px;
+            border: none;
+            border-radius: 2px;
+          }  
+        }
+      
+      
+        input[type='submit'] {
+          float: left;
+          margin-top: 20px;
+          margin-left: 20px;
+          margin-bottom: 30px;
+          color: #fff;
+          background-color: #3CCACE;
+        }
+      }
+    }
+    &__profile {
+      text-align: center;
+      padding: 30px;
+      border-bottom: 1px solid #f5f5f5;
+      h2 {
+        letter-spacing: 3px;
+        font-size: 30px;
+        font-weight: 600;
+        text-align: center;
+      }
+      &__info {
+        text-align: center;
+        .field {
+          margin-bottom: 10px;
+          
+          select {
+            width: 200px;
+            height: 48px;
+          }
+          .field-label {
+            padding: 10px 0;
+            letter-spacing: 1px;
+            font-size: 14px;
+            font-weight: bold;
+            i {
+              font-size: 11px;
+            }
+          }
+      
+          .field-text {
+            width: 70%;
+            border-style: solid;
+            border-width: 0;
+          }
+      
+          .field-required {
+            margin: 0 0 0 8px;
+            padding: 2px 4px;
+            border-radius: 2px;
+            color: #fff;
+            font-size: 12px;
+            vertical-align: top;
+            background: #ea352d;
+          }
+      
+          .field-input {
+            text-align: center;
+            input {
+              width: 40%;
+              padding: 10px;
+              letter-spacing: 1px;
+            }
+            #_destination_introduction {
+              width: 60%;
+              height: 300px;
+            }
+          }
+      
+        }
+      
+        .actions {
+            margin-left: 230px;
+           .btn {
+            display: inline-block;
+            margin-left: 55px;
+            height: 50px;
+            padding: 0 80px;
+            line-height: 50px;
+            letter-spacing: 1px;
+            border: none;
+            border-radius: 2px;
+          }  
+        }
+      
+      
+        input[type='submit'] {
+          float: left;
+          margin-top: 20px;
+          margin-left: 20px;
+          margin-bottom: 30px;
+          color: #fff;
+          background-color: #3CCACE;
+        }
+      }
+      
+    }
+    &__destination {
+      text-align: center;
+      h3 {
+        letter-spacing: 3px;
+        font-size: 30px;
+        padding: 30px;
+        font-weight: 600;
+        text-align: center;
+        border-bottom: 1px solid #f5f5f5;
+      }
+      .address-form {
+        .field {
+          margin-bottom: 10px;
+          text-align: left;
+          select {
+            width: 200px;
+            height: 48px;
+          }
+          .field-label {
+            margin-left: 230px;
+            padding: 10px 0;
+            letter-spacing: 1px;
+            font-size: 14px;
+            font-weight: bold;
+            i {
+              font-size: 11px;
+            }
+          }
+      
+          .field-text {
+            width: 70%;
+            border-style: solid;
+            border-width: 0;
+          }
+      
+          .field-required {
+            margin: 0 0 0 8px;
+            padding: 2px 4px;
+            border-radius: 2px;
+            color: #fff;
+            font-size: 12px;
+            vertical-align: top;
+            background: #ea352d;
+          }
+      
+          .field-input {
+            text-align: center;
+            input {
+              width: 40%;
+              padding: 10px;
+              letter-spacing: 1px;
+            }
+          }
+      
+          .field-input_flex {
+            display: flex;
+            justify-content: center;
+            input {
+              width: 115px;
+              padding: 10px;
+              letter-spacing: 1px;
+            }
+            .leftbox{
+              margin-left: 15px;
+            }
+          }
+      
+          .year,.month,.day{
+            width: 10%;
+            height: 30px;
+           }
+      
+        }
+      
+        .actions {
+            margin-top: 50px;
+            margin-left: 230px;
+            
+           .btn {
+            display: inline-block;
+            height: 50px;
+            padding: 0 80px;
+            line-height: 50px;
+            letter-spacing: 1px;
+            border: none;
+            border-radius: 2px;
+            
+          }  
+        }
+      
+      
+        input[type='submit'] {
+          float: left;
+          margin-left: 58px;
+          margin-top: 20px;
+          margin-bottom: 30px;
+          color: #fff;
+          background-color: #3CCACE;
+        }
+      }
+    }
+    &__payment {
+      text-align: center;
+      padding: 30px;
+      border-bottom: 1px solid #f5f5f5;
+      h3 {
+        letter-spacing: 3px;
+        font-size: 30px;
+        font-weight: 600;
+        text-align: center;
+      }
+    }
+    &__selection {
+      max-width: 375px;
+      margin: 0px auto;
+      &__box{
+        margin-top: 25px;
+        h4 {
+          font-size: 15px;
+          line-height: 21px;
+          font-weight: 600;
+        }
+        ul {
+          margin-top: 32px;
+          position: relative;
+          li {
+            
+          }
+          #charge-form{
+            float: right;
+            position: absolute;
+            right: 5px;
+            bottom: 7px;
+            button {
+              float: right;
+              background-color: white;
+              border: 1px solid rgb(234, 53, 45);
+              border-radius: 4px;
+              color: rgb(234, 53, 45);
+              cursor: pointer;
+              font-weight: bold;
+              padding: 6px 12px;
+            }
+          }
+        }
+        
+        .change-creditcard {
+          margin-top: 32px;
+          margin-bottom: 32px;
+          color: #0095ee;
+          font-size: 15px;
+        }
+      }
+    }
+  }
+    
+  &__bottom {
+    float: left;
+    margin: auto 0;
+    width: calc(100% - 800px);
+    text-align: center;
+    &__nav {
+      display: block;
+      margin: 0;
+      padding: 0;
+      &__head {
+        text-align: left;
+        display: block;
+        width: 60%;
+        margin: 8px 0  0 100px;
+        margin-block-start: 1em;
+        margin-block-end: 1em;
+        margin-inline-start: 0px;
+        margin-inline-end: 0px;
+        font-weight: bold;
+        padding-inline-start: 40px;
+      }
+      &__list {
+        display: block;
+        width: 60%;
+        margin: 8px 0  0 100px;
+        margin-block-start: 1em;
+        margin-block-end: 1em;
+        margin-inline-start: 0px;
+        margin-inline-end: 0px;
+        padding-inline-start: 40px;
+        &__item {
+          position: relative;
+          display: list-item;
+          min-height: 48px;
+          padding: 16px;
+          background: #fff;
+          font-size: 14px;
+          color: #333;
+          border: 1px solid #eee;
+          
+        }
+        &__item:hover {
+          background-color: #3CCACE;
+          color: white;
+          font-size: 15px;
+        }
+      }
+    }
+  }
+}
+

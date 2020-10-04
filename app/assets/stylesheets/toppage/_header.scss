@@ -40,7 +40,7 @@
         width: 100%;
         display: flex;
         margin-bottom: 5px;
-        input{
+        #searchInput{
           width: calc(100% - 26px);
           height: 36px;
           padding: 0 0 0 5px;
@@ -69,12 +69,12 @@
     font-size: 14px;
     display: flex;
     margin-bottom: 10px;
-    ul{
-      position: relative;
-      display: flex;
-      li{
+    .listsLeft{
+     list-style: none; 
+     display: flex;
+      .listsLeft__item--first{
         text-decoration: none;
-        padding: 0px;
+        padding: 0;
         #Btn{
           color: $gray;
           text-decoration: none;
@@ -84,17 +84,61 @@
           background-size: 18px;
           padding-right: 30px;
         }
+      }
+        }
+      }
 
+    .listLeft__item__first__displayNone{
+      display: none;
+      &__categoryTree{
+        position: relative;
+        background-color: #fff;
+        flex-direction: column;
+        display: flex;;
+        &__item{
+          position: relative;
         }
       }
     }
+
+    .listsLeft__item{
+      display: flex;
+      line-height: 38px;
+      padding: 0 0 0 16px;
+      #Btn{
+        color: $gray;
+        text-decoration: none;
+        line-height: 32px;
+        background-position: center right;
+        background-repeat: no-repeat;
+        background-size: 18px;          
+        padding-right: 30px;
+        }
+
+        }
    
     .listsRight{
       margin-left: auto;
       display: flex;
-      text-decoration: none;
-      padding: 0px;
+      &__item{
+        color: $gray;
+        line-height: 38px;
+        padding: 0 0 0 16px;
+        #Btn{
+          display: flex;
+          align-items: center;
+          color: $gray;
+          text-decoration: none;
+          line-height: 32px;
+        }
+      }
     }
+
+    img{
+      width: 100%;
+      vertical-align: bottom;
+    }
+  
 
         
         

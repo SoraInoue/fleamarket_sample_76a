@@ -1,0 +1,384 @@
+a {
+  color: inherit;
+  text-decoration: none;
+  box-sizing: border-box;
+}
+img {
+  vertical-align: middle;
+  box-sizing: border-box;
+}
+.error-messages{
+  color: #ff0211;
+  font-size: 14px;
+  line-height: 1.4em;
+  margin: 16px 0;
+  box-sizing: border-box;
+}
+
+.sell-title{
+  align-items: center;
+  margin: 0!important;
+  box-sizing: border-box;
+  &__text{
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1.4em;
+  }
+  &__require{
+    margin-left: 8px;
+    font-size: 12px;
+    padding: 0 4px;
+    background-color: #00ECFF;
+    color: #fff;
+    border-radius: 2px;
+    display: inline-block;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 1.4em;
+    margin: 0;
+    &__common{
+      margin-left: 8px;
+      font-size: 12px;
+      padding: 0 4px;
+      background-color: #bfbfbf;
+      color: #fff;
+      border-radius: 2px;
+      display: inline-block;
+      font-style: normal;
+      font-weight: 600;
+      line-height: 1.4em;
+      margin: 0;
+    }
+  }
+}
+
+.sell-sub-head{
+  box-sizing: border-box;
+  color: rgb(136, 136, 136);
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.4em;
+  margin-bottom: 24px;
+  display: flex;
+  &__guides-link{
+    color: rgb(0, 149, 238);
+    margin-left: 4px;
+  }
+}
+
+.sell-collection_select{
+  box-sizing: border-box;
+  margin-top: 16px;
+  &__label{
+    display: inline-block;
+    position: relative;
+    width: 100%;
+    .fas.fa-chevron-down{
+      box-sizing: border-box;
+      pointer-events: none;
+      position: absolute;
+      right: 16px;
+      top: 40%;
+      color: rgb(136, 136, 136);
+      height: 48px;
+    }
+  }
+  &__input{
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  color: #222;
+  font-size: 15px;
+  height: 48px;
+  line-height: 1;
+  margin: 0;
+  outline: none;
+  padding: 0 56px 0 16px;
+  width: 100%;
+  }
+}
+
+
+.edit {
+  box-sizing: border-box;
+  position: relative;
+  color: rgb(51, 51, 51);
+  background-color: rgb(245, 245, 245);
+  font-family: Arial, 游ゴシック体, YuGothic, メイリオ, Meiryo, sans-serif;
+  font-size: 14px;
+  line-height: 1;
+  box-sizing: border-box;
+  .sell-header{
+    box-sizing: border-box;
+    height: 128px;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    .header-logo{
+      width: 185px;
+    }
+  }
+  .sell-container{
+    box-sizing: border-box;
+    max-width: 700px;
+    width: 100%;
+    margin: 0px auto;
+    background-color: rgb(255, 255, 255);
+
+    // 画像部分
+    &__content{
+      height: auto;
+      padding: 40px;
+      border-bottom: 1px;
+      border-bottom-color: #efefef;
+      border-bottom-style: solid;
+      &__max-sheet{
+        margin-top: 16px;
+      }
+      &__upload{
+        margin-top: 16px;
+        display: flex;
+        flex-wrap: wrap;
+        &__items{
+          height: auto;
+          width: 100%;
+
+          &__box{
+            height: auto;
+            align-content: center;
+            align-items: center;
+            cursor: pointer;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            position: relative;
+            border-width: 1px;
+
+            #output-box{
+              box-sizing: border-box;
+              display: flex;
+              flex-wrap: wrap;
+              width: 100%;
+              height: auto;
+
+              .preview-image{
+                box-sizing: border-box;
+                height: 150px;
+                width: 20%;
+                padding: 0px 4px;
+                margin-top: 8px;
+
+                &__figure{
+                  margin:0 auto;
+                  height: 118px;
+                  background-color: rgb(245, 245, 245);
+                  img{
+                    box-sizing: border-box;
+                    width: 100%;
+                    height: 100%;
+                    object-fit: contain;
+                  }
+                }
+                &__button{
+                  border-top-width: 1px;
+                  border-top-color: rgb(204, 204, 204);
+                  border-top-style: solid;
+                  background-color: rgb(245, 245, 245);
+                  justify-content: space-around;
+                  display: flex;
+                  align-items: center;
+                  height: 32px;
+                  color: rgb(0, 149, 238);
+                  .checkbox{
+                    display: none;
+                  }
+                  .checkbox__label{
+                    cursor: pointer;
+                  }
+                }
+              }
+
+              #image-input{
+                box-sizing: border-box;
+                height: 100%;
+                -webkit-flex: 1;
+                flex: 1;
+                margin-top: 8px;
+
+                .sell-container__content__upload__items__box__label{
+                  box-sizing: border-box;
+                  background-color: rgb(245, 245, 245);
+                  height: 150px;
+                  border-width: 1px;
+                  border-style: dashed;
+                  border-color: rgb(204, 204, 204);
+                  text-align: center;
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                  position: relative;
+                  i{
+                    box-sizing: border-box;
+                    margin-bottom: 8px;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
+    // 商品名部分
+    &__content{
+      &__name{
+        margin-top: 16px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+        height: 48px;
+        padding: 0 16px;
+        width: 100%;
+      }
+      &__description{
+        margin-top: 16px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+        padding: 16px;
+        width: 100%;
+        font-size: 16px;
+        display: block;
+        resize: vertical;
+      }
+      &__word-count{
+        text-align: right;
+        color: #888;
+        font-size: 12px;
+        line-height: 1.4em;
+      }
+    }
+
+    &__content{
+      &__brand{
+        margin-top: 16px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+        height: 48px;
+        padding: 0 16px;
+        width: 100%;
+      }
+    }
+    &__content{
+      &__price{
+        -webkit-box-align: center;
+        align-items: center;
+        box-sizing: content-box;
+        display: flex;
+        height: 46px;
+        justify-content:space-between;
+        &form__label{
+          font-size: 14px;
+        }
+        &__form__box{
+          border: 1px solid #ccc;
+          border-radius: 4px;
+          height: 48px;
+          margin-left: 8px;
+          padding: 0 16px;
+          width: 300px;
+          align-items: center;
+          display: inline-flex;
+          text-align: right;
+        }
+      }
+      #error-price{
+        box-sizing: border-box;
+        text-align: right;
+      }
+      &__commission{
+        display: flex;
+        justify-content:space-between;
+        height: 70px;
+        padding: 12px 0px;
+        align-items: center;
+        border-bottom: 1px;
+        border-bottom-color: #efefef;
+        border-bottom-style: solid;
+      }
+      &__profit{
+        display: flex;
+        justify-content:space-between;
+        height: 70px;
+        padding: 12px 0px;
+        align-items: center;
+      }
+    }
+    .submit-btn{
+      box-sizing: border-box;
+      margin: 0 auto;
+      width: 360px;
+      margin-bottom: 32px;
+      &__sell-btn{
+        background-color: #00ECFF;
+        color: #fff;
+        margin-bottom: 24px;
+        width: 100%;
+        font-size: 17px;
+        height: 48px;
+        font-weight: 600;
+        border-radius: 4px;
+      }
+      &__return-btn{
+        background-color: #ccc;
+        color: #222;
+        width: 100%;
+        font-size: 17px;
+        height: 48px;
+        font-weight: 600;
+        padding: 14px 0;
+        border-radius: 4px;
+        display: inline-block;
+        text-align: center;
+      }
+    }
+    .attention-box{
+      box-sizing: border-box;
+      font-size: 12px;
+      line-height: 1.4em;
+      word-break: keep-all;
+      a{
+        box-sizing: border-box;
+        color: #0095ee;
+      }
+    }
+  }
+  .sell-footer{
+    box-sizing: border-box;
+    padding: 40px 0px;
+    text-align: center;
+    nav{
+      box-sizing: border-box;
+      .clearfix{
+        box-sizing: border-box;
+        display: inline-block;
+        font-size: 12px;
+        display: flex;
+        justify-content: center;
+        margin-bottom: 20px;
+        li{
+          box-sizing: border-box;
+          margin: 0px 8px;
+        }
+      }
+    }
+  }
+  .footer__logo__image{
+    width: 151px;
+  }
+}

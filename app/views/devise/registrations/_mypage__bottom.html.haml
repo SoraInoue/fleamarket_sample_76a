@@ -1,0 +1,31 @@
+.mypage__bottom__nav
+  %ul.mypage__bottom__nav__list
+    %li
+      = link_to "マイページ", mypage_path, class: "mypage__bottom__nav__list__item"
+    %li
+      = link_to "いいね！一覧", "#", class: "mypage__bottom__nav__list__item"
+    %li
+      = link_to "出品する", "#", class: "mypage__bottom__nav__list__item"
+    %li
+      = link_to "出品した商品-出品中", "#", class: "mypage__bottom__nav__list__item"
+    %li
+      = link_to "出品した商品-取引中", "#", class: "mypage__bottom__nav__list__item"
+    %li
+      = link_to "出品した商品-売却済み", "#", class: "mypage__bottom__nav__list__item"
+    %li
+      = link_to "購入した商品-取引中", "#", class: "mypage__bottom__nav__list__item"
+    %li
+      = link_to "購入した商品-過去の取引", "#", class: "mypage__bottom__nav__list__item"
+    %li
+      = link_to "評価一覧", "#", class: "mypage__bottom__nav__list__item"
+  %h3.mypage__bottom__nav__head
+    設定
+  %ul.mypage__bottom__nav__list
+    %li
+      = link_to "プロフィール", profile_path, class: "mypage__bottom__nav__list__item"
+    %li
+      = link_to "発送元・お届け先住所変更", destination_path, class: "mypage__bottom__nav__list__item"
+    %li
+      = link_to "支払い方法", creditcards_path, class: "mypage__bottom__nav__list__item"
+    %li
+      = link_to "ログアウト", logout_page_path, class: "mypage__bottom__nav__list__item"

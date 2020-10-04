@@ -4,27 +4,31 @@
       =link_to "/",class: "top-icon" do
         = image_tag 'logo/logo.png'
     .serchBox
-      %form{:action => "#", :method => "get", :accept_charset => "UTF-8"}
-        %input{:type => "hidden", :value => "#" ,:name => "utf8"}
-        %input.searchBox__input{:id => "searchInput", :name => "key", :placeholder => "キーワードから探す"}
+      = form_with url: items_searches_path, local: true, method: :get, class: "serchBox__input" do |form|
+        = form.text_field :key, placeholder: "キーワードから探す", class: "searchBox__input",id: "searchInput"
         %button{:type => "submit"}
           .searchBox__icon
             =image_tag 'icon/icon-search 1.png'
-        %input{:type => "hidden", :name => "authenticity_token", :value => "#"}           
+        %input{:type => "hidden", :name => "authenticity_token", :value => "#"}  
 
   .nav
     %ul.listsLeft
       %li.listsLeft__item--first
         = link_to "カテゴリー", "#" ,id: "Btn" 
+        .listLeft__item__first__displayNone
+          %ul.listLeft__item__displayNone__categoryTree
+            %li.listLeft__item__first__displayNone__categoryTree__item
+
       %li.listsLeft__item
         = link_to "ブランド", "#" ,id: "Btn" 
         %ul.brandsPulldown-displayNone
+
     %ul.listsRight
       -if user_signed_in?
         %li.listsRight__item
-          = link_to "マイページ", "#" , id: "Btn"
+          = link_to "マイページ", mypage_path , id: "Btn"
         %li.listsRight__item
-          = link_to "ログアウト", destroy_user_session_path, method: :delete, id: "Btn"
+          = link_to "ログアウト", users_sign_out_path, method: :delete, id: "Btn"
       - else
         %li.listsRight__item
           = link_to "ログイン", new_user_session_path,  id: "Btn" 

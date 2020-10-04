@@ -1,9 +1,9 @@
-.sell
+.edit
   %header.sell-header
     = link_to image_tag('logo.png'), root_path, alt: 'Furima', height: '55', class: 'header-logo'
   %main
     %section.sell-container
-      = form_with model: @item, url: items_path,id: "form" do |f|
+      = form_with model: @item, url: item_path do |f|
 
         -# 画像部分
         .sell-container__content
@@ -17,12 +17,30 @@
             .sell-container__content__upload__items
               .sell-container__content__upload__items__box
                 %ul#output-box
-                  %div#image-input
-                    = f.label :images, for: "item_images0", class: 'sell-container__content__upload__items__box__label', data: {label_id: 0 } do
-                      = f.file_field :images, multiple: true, class: "sell-container__content__upload__items__box__input", id: "item_images0", style: 'display: none;'
-                      %pre
-                        %i.fas.fa-camera.fa-lg
-                        クリックしてファイルをアップロード
+                  - labelLength = 0
+                  - @item.images.each do |image|
+                    %h1{id: "check#{labelLength}"}
+                    %li.preview-image{id: "upload-image#{labelLength}", "data-image-id": "#{labelLength}"}
+                      %figure.preview-image__figure
+                        = image_tag image, alt: ""
+                        .preview-image__button
+                          %a.preview-image__button__edit 編集
+                          = f.check_box :image_ids, {class: 'checkbox', id: "checkbox#{labelLength}", :multiple => true,value: "#{labelLength-1}"}, image.id, false
+                          %label.checkbox__label{for: "checkbox#{labelLength}","data-image-id": "#{labelLength}"}削除
+                        - labelLength = labelLength +1
+                  -if labelLength < 10
+                    %div#image-input
+                      = f.label :images, for: "item_images#{labelLength}", class: 'sell-container__content__upload__items__box__label', data: {label_id: labelLength } do
+                        = f.file_field :images, multiple: true, class: "sell-container__content__upload__items__box__input", id: "item_images#{labelLength}",style: 'display: none;'
+                        %pre
+                          %i.fas.fa-camera.fa-lg
+                  -elsif labelLength < 11
+                    %div#image-input
+                      = f.label :images, for: "item_images#{labelLength}", class: 'sell-container__content__upload__items__box__label',style: 'display: none;', data: {label_id: labelLength } do
+                        = f.file_field :images, multiple: true, class: "sell-container__content__upload__items__box__input", id: "item_images#{labelLength}", style: 'display: none;'
+                        %pre
+                          %i.fas.fa-camera.fa-lg
+                  -else
           .error-messages#error-image
 
         -# 商品名部分
@@ -59,7 +77,17 @@
                   必須
             .sell-collection_select
               = f.label :genre_id, {class: 'sell-collection_select__label'} do
-                = f.collection_select :genre_id, @genre_parent, :id, :name, {prompt: "選択して下さい"},{ class: 'sell-collection_select__input', id: 'genre-select', required: "required"}
+                = f.collection_select :genre_id, Genre.roots, :id, :name, {prompt: "選択して下さい", selected: @item.genre&.root_id},{ class: 'sell-collection_select__input', id: 'genre-select', required: "required"}
+                %i.fas.fa-chevron-down
+            .error-messages#error-genre
+            .sell-collection_select#select-children-box
+              = f.label :genre_id, {class: 'sell-collection_select__label'} do
+                = f.collection_select :genre_id, @item.genre.parent.siblings, :id, :name, {prompt: "選択して下さい", selected: @item.genre.parent_id},{ class: 'sell-collection_select__input', id: 'genre-select-children', required: "required"}
+                %i.fas.fa-chevron-down
+            .error-messages#error-genre
+            .sell-collection_select#select-grandchildren-box
+              = f.label :genre_id, {class: 'sell-collection_select__label'} do
+                = f.collection_select :genre_id, @item.genre.siblings, :id, :name, {prompt: "選択して下さい", selected: @item.genre.id},{ class: 'sell-collection_select__input', id: 'genre-select-grandchildren', required: "required"}
                 %i.fas.fa-chevron-down
             .error-messages#error-genre
 
@@ -138,20 +166,26 @@
             .sell-container__content__price__form
               = f.label :price, class: 'sell-container__content__price__form__label' do
                 ¥
-                = f.number_field :price, {placeholder: '0', value: '', autocomplete:"off", class: 'sell-container__content__price__form__box', required: "required"}
+                = f.number_field :price, {placeholder: '0', value: @item.price, autocomplete:"off", class: 'sell-container__content__price__form__box', required: "required"}
           .error-messages#error-price
 
           .sell-container__content__commission
             .sell-container__content__commission__left
               販売手数料 （10%）
-            .sell-container__content__commission__right ー
+            - fee = @item.price / 10
+            .sell-container__content__commission__right
+              ¥
+              = fee
           .sell-container__content__profit
             .sell-container__content__profit__left
               販売利益
-            .sell-container__content__profit__right ー
+            - benefit = @item.price - fee
+            .sell-container__content__profit__right
+              ¥
+              = benefit
           
           .submit-btn
-            = f.submit '出品する', class: 'submit-btn__sell-btn'
+            = f.submit '更新する', class: 'submit-btn__sell-btn'
             = link_to 'もどる', root_path, class: 'submit-btn__return-btn'
           .attention-box
             %p
@@ -176,4 +210,3 @@
     %p
       %small
         &copy; Furima, Inc.
-

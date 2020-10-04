@@ -1,0 +1,50 @@
+%header.pcHeader
+  =render 'items/header'
+
+.mypage
+  .mypage__content
+    .mypage__content__card
+      %h3 クレジットカード情報入力
+    .mypage__content__card__info
+      = form_with model: @creditcard, url: creditcards_path, local: true, html: { name: 'inputForm' } do |f|
+        .field
+          .field-label
+            = f.label 'カード番号'
+            %span.field-required 必須
+          .field-input
+            = f.text_field :card_number, id: "card_number",class: "card_form",maxlength: '16', placeholder: "半角数字のみ", autofocus: true
+        .field
+          .field-label
+            = f.label '有効期限'
+            %span.field-required 必須
+          .field-input_flex
+            .flex-input
+              = f.collection_select :exp_month , ExpMonth.all, :id, :name 
+            .leftbox
+              = f.collection_select :exp_year, ExpYear.all, :id, :name
+        .field
+          .field-label
+            =f.label 'セキュリティーコード'
+            %span.field-required 必須
+          .field-input
+            = f.password_field :cvc, id: 'cvc',class: "card_form" ,maxlength: '6', placeholder: "カード背面4桁もしくは3桁の番号"
+        .actions
+          = f.submit '登録', id: 'token_submit', class: "btn"
+
+  .mypage__bottom
+    = render 'devise/registrations/mypage__bottom'
+
+%aside.appBanner
+  .inner
+    %h2.inner__title
+      だれでもかんたん、人生を変えるフリマアプリ
+    %p.inner__text
+      今すぐ無料ダウンロード
+    .innner__icon        
+      =link_to "#", class: "aBtn" do
+        = image_tag 'icon/Download_on_the_App_Store_Badge_JP_blk_.png'
+      =link_to "#", class: "gBtn" do
+        = image_tag "icon/google-play-badge.png"
+        
+%footer.home-footer
+  = render 'items/top-footer'
