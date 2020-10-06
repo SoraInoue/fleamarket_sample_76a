@@ -21,7 +21,7 @@ document.addEventListener(
             $("#exp_month").removeAttr("name");
             $("#exp_year").removeAttr("name"); 
             // name属性を削除することにより、dataベースに送るのを防ぐ。
-            $(".leftbox").append(
+            $("#card_token").append(
               $('<input type="hidden" name="payjp-token">').val(response.id)
               // <input type="hidden" name="payjp-token" value= response.id>が#card_tokenに追加される。
             ); 

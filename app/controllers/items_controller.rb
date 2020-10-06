@@ -40,7 +40,7 @@ class ItemsController < ApplicationController
   # 商品詳細表示のアクション
   def show
     @comment = Comment.new
-    @comment = @item.comments.includes(:user)
+    @comments = @item.comments.includes(:user)
     @destination = Destination.find_by(user_id: @item.seller_id)
   end
 

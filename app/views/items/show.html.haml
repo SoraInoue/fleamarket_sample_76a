@@ -132,12 +132,11 @@
             %h4 ＜コメント一覧＞
             - if @comments
               - @comments.each do |comment|
-                - if comment.user_id == current_user.id
-                  %p
-                    %strong
-                      = link_to comment.user.nickname
-                    %span :
-                    = comment.comment
+                %p
+                  %strong
+                    = link_to comment.user.family_name
+                  %span :
+                  = comment.comment
 
       %ul.links
         %li.test-link

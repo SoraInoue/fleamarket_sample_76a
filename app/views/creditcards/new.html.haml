@@ -6,7 +6,7 @@
     .mypage__content__card
       %h3 クレジットカード情報入力
     .mypage__content__card__info
-      = form_with model: @creditcard, url: creditcards_path, local: true, html: { name: 'inputForm' } do |f|
+      = form_with model: @creditcard, url: creditcards_path, local: true, html: { name: 'inputForm' } do |f| 
         .field
           .field-label
             = f.label 'カード番号'
@@ -28,7 +28,7 @@
             %span.field-required 必須
           .field-input
             = f.password_field :cvc, id: 'cvc',class: "card_form" ,maxlength: '6', placeholder: "カード背面4桁もしくは3桁の番号"
-        .actions
+        #card_token.actions
           = f.submit '登録', id: 'token_submit', class: "btn"
 
   .mypage__bottom

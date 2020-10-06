@@ -1,14 +1,15 @@
-class CommentController < ApplicationController
+class CommentsController < ApplicationController
   before_action :set_item
 
   def create
     comment = Comment.new(comment_params)
+    binding.pry
     if comment.save
-      redirect_to item_path(@item), notice: 'コメントが保存されました'
+      redirect_to  item_path(@item), notice: 'コメントが保存されました'
     else
       comment = @item.comments.includes(:user)
       flash.now[:alert] = "保存できていません"
-      redirect_to item_path(params[:id])
+      redirect_to item_path(@item)
     end
   end
 

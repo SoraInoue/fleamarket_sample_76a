@@ -35,12 +35,12 @@
       .contents__payment--delivery
         %h3 配送先
         %p
-          = "〒" + @user.postal_code 
+          = "〒" + current_user.destination.postal_code 
         %p
-          - @prefecture = Prefecture.find @user.prefecture_id
-          = @prefecture.name + @user.city + @user.house_number
+          - @prefecture = Prefecture.find current_user.destination.prefecture_id
+          = @prefecture.name + current_user.destination.city + current_user.destination.street_block
         %p
-          = @user.destination_family_name_kana + @user.destination_first_name_kana
+          = current_user.destination.destination_family_name_kana + current_user.destination.destination_first_name_kana
     .contents__btn
       .contents__btn--alert
         -# 配送先と支払い方法の入力を完了してください。
