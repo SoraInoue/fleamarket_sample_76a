@@ -42,7 +42,7 @@
     .productBox__productLists
       - @items.each do |item|
         .productBox__productLists__productList
-          =link_to "items/show" ,class: "productBox__productLists__productList__goodsshow" do
+          =link_to item_path(item.id) ,class: "productBox__productLists__productList__goodsshow" do
             %figure.productBox__productLists__productList__goodsshow__image
             -ft_images = item.images
             =image_tag item.images[0], class: "productBox__productLists__productList__goodsshow__itemsphoto"

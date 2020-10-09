@@ -54,7 +54,7 @@ $(document).on('turbolinks:load', function(){
   
 
   //削除ボタンが押された時
-  $(document).on('click', '.preview-image__button__delete', function(){
+  $('#output-box').on('click', '.preview-image__button__delete', function(){
     let targetImageId = $(this).data('image-id');
     // イベント元のカスタムデータ属性の値を取得
     $(`#upload-image${targetImageId}`).remove();

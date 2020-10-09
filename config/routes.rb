@@ -12,6 +12,7 @@ devise_scope :user do
   get 'destination' => 'users/registrations#destination'
   post 'destination' => 'users/registrations#update'
   get '/users/sign_out' => 'devise/sessions#destroy'
+  get 'items/items/new' => 'items#new'
 end
 
 namespace :items do

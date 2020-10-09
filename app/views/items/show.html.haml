@@ -42,12 +42,17 @@
               （税込）
             %span
               送料込み
-          -if user_signed_in? && current_user.id != @item.seller_id
+          -if @item.buyer_id != nil
+            .itembtnarea
+              %button.soldBtn{type: "submit",name: "button"}
+                売り切れました
+          - else
+          -if user_signed_in? && current_user.id != @item.seller_id && @item.buyer_id.nil?
             .itembtnarea
               %button.buyBtn{type: "submit",name: "button"}
                 = link_to "商品購入", creditcard_path
           - else
-          -if user_signed_in? && current_user.id == @item.seller_id
+          -if user_signed_in? && current_user.id == @item.seller_id && @item.buyer_id.nil?
             .itembtnarea__seller
               %button.editBtn{type: "submit",name: "button"}
                 = link_to edit_item_path(@item) do
