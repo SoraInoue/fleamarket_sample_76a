@@ -2,8 +2,9 @@
 
 class Users::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_sign_up_params, only: [:create]
+  before_action :login_check, only: [:mypage, :logout_page, :payment_method, :creditcard, :profile, :destination]
   before_action :configure_account_update_params, only: [:update]
-  
+
   # GET /resource/sign_up
   def new
     @user = User.new
@@ -115,5 +116,12 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   def destination_update_params
     params.require(:destination).permit(:phone_number,:destination_family_name, :destination_first_name, :destination_family_name_kana, :destination_first_name_kana, :postal_code, :prefecture_id, :city, :street_block, :mansion_name, :nickname, :introduction)
+  end
+
+  def login_check
+    unless user_signed_in?
+      flash[:alert] = "ログインしてください"
+      redirect_to new_user_session_path
+    end
   end
 end

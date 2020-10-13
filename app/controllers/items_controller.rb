@@ -1,11 +1,11 @@
 class ItemsController < ApplicationController
 
+  before_action :login_check, only: [:new, :edit, :update, :destroy]
   before_action :set_item, only: [:show, :destroy, :edit, :update]
-
 
   def index
     @genre_parents = Genre.where("ancestry is null")
-    @items = Item.limit(5).order(updated_at: :desc)
+    @items = Item.limit(5).order(created_at: :desc)
     #ホームページのピックアップに記載される情報は商品名・価格・画像のみ
   end
 
@@ -46,7 +46,11 @@ class ItemsController < ApplicationController
 
   # 商品編集のアクション
   def edit
-    @genre_parent =  Genre.where("ancestry is null")
+    if current_user.id == @item.seller_id
+      @genre_parent =  Genre.where("ancestry is null")
+    else
+      redirect_to root_path
+    end
   end
 
   def update
@@ -93,6 +97,13 @@ class ItemsController < ApplicationController
 
   def set_item
     @item = Item.find(params[:id])
+  end
+
+  def login_check
+    unless user_signed_in?
+      flash[:alert] = "ログインしてください"
+      redirect_to new_user_session_path
+    end
   end
 
 end

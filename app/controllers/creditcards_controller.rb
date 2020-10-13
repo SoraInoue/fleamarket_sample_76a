@@ -1,10 +1,11 @@
 class CreditcardsController < ApplicationController
   require 'payjp'
 
+  before_action :login_check, only: [:index,:show,:pay,:delete]
   before_action :set_item, only:[:show,:pay]
   before_action :take_card, only:[:index,:show,:pay,:delete]
   before_action :set_api_key
-
+  before_action :correct_user, only:[:show]
 
   def index
     if @creditcard.blank?
@@ -82,6 +83,17 @@ class CreditcardsController < ApplicationController
 
 private
 
+  def correct_user
+    @item = Item.find(params[:id])
+      if @item.buyer_id == nil
+      else 
+        redirect_to(root_url) and return 
+      end
+      if @item.seller_id == current_user.id
+        redirect_to(root_path) and return
+      end  
+  end
+
   def set_item
     @item = Item.find(params[:id])
   end
@@ -100,6 +112,13 @@ private
 
   def take_card
     @creditcard = Creditcard.find_by(user_id: current_user.id)
+  end
+
+  def login_check
+    unless user_signed_in?
+      flash[:alert] = "ログインしてください"
+      redirect_to new_user_session_path
+    end
   end
 
 end

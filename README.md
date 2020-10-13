@@ -76,8 +76,6 @@
 |Column|Type|Options|
 |------|----|-------|
 |user_id|string|null: false|
-|token_id|string|null: false|
-|user_id|string|null: false|
 |card_id|string|null: false|
 |customer_id|string|null: false|
 

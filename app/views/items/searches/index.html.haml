@@ -18,6 +18,10 @@
                 %figure.itemsbox__foundgoods__image
                 -ft_images = item.images
                 =image_tag item.images[0], class: "itemsbox__foundgoods__image__itemsphoto"
+                -if item.buyer_id.present?
+                  .itemsbox__foundgoods__image__itemsphoto__sold
+                    .itemsbox__foundgoods__image__itemsphoto__sold__inner
+                      SOLD
                 .itemsbox__body
                   %h3.found-name
                     =item.name
@@ -47,7 +51,7 @@
 
 .home-footer
   = render 'items/top-footer'
-  
+
 =link_to "items/new" do
   .purchaseBtn
     %span.purchaseBtn__text
