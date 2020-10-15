@@ -6,18 +6,17 @@
     .mypage__content__profile
       %h2 プロフィール
     .mypage__content__profile__info
-      = form_with model: @user, html: {class: "Form"}, local: true do |f|
-        = f.fields_for :destination do |destination|
-          .field
-            .field-label
-              = destination.label 'ニックネーム'
-            .field-input
-              = destination.text_field :nickname, placeholder: "（例）フリマ太郎", autofocus: true, value: current_user.destination.nickname
-          .field
-            .field-label
-              = destination.label '自己紹介'
-            .field-input
-              = destination.text_area :introduction, value: current_user.destination.introduction
+      = form_with model: @destination, html: {class: "Form"}, local: true do |f|
+        .field
+          .field-label
+            = f.label 'ニックネーム'
+          .field-input
+            = f.text_field :nickname, placeholder: "（例）フリマ太郎", autofocus: true, value: current_user.destination.nickname
+        .field
+          .field-label
+            = f.label '自己紹介'
+          .field-input
+            = f.text_area :introduction, value: current_user.destination.introduction
         .actions    
           = f.submit '変更する', class: 'btn'
           

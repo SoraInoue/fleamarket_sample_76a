@@ -2,7 +2,7 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
+         :recoverable, :rememberable#, :validatable
 
   # def update_without_current_password(user_params, *options)
   #   binding.pry
@@ -30,7 +30,7 @@ class User < ApplicationRecord
   VALID_EMAIL_REGEX = /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i
   validates :email, presence: true, uniqueness: true, format: { with: VALID_EMAIL_REGEX }
 
-  validates :password, presence: true, length: { minimum: 7}
+  validates :password, presence: true, length: { minimum: 7}, on: :create
   validates :family_name, presence: true,
   format: { with: /[^-｡-ﾟ]+/}
   validates :first_name, presence: true,

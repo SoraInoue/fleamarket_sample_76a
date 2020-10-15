@@ -53,13 +53,13 @@
                 = destination.label '番地'
                 %span.field-required 必須
               .field-input
-                = destination.text_field :house_number, placeholder: "（例）青山１−１−１", value: current_user.destination.street_block
+                = destination.text_field :street_block, placeholder: "（例）青山１−１−１", value: current_user.destination.street_block
 
             .field
               .field-label
                 = destination.label 'マンション・ビル名'
               .field-input
-                = destination.text_field :building_name, placeholder: "（例）柳ビル 103", value: current_user.destination.mansion_name
+                = destination.text_field :mansion_name, placeholder: "（例）柳ビル 103", value: current_user.destination.mansion_name
 
           .field
             .field-label

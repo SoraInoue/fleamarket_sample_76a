@@ -40,15 +40,26 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def update
-    if current_user.destination.update(destination_update_params)
-      redirect_to root_path
+    if params[:destination]
+      if current_user.destination.update(destination_update_params) && current_user.update(phone_params)
+        redirect_to root_path
+      else
+        flash.now[:alert] = '必須項目を全て入力してください'
+        render :destination
+      end
     else
-      render :destination
+
+      if current_user.destination.update(profile_update_params)
+        redirect_to root_path
+      else
+        flash.now[:alert] = '必須項目を全て入力してください'
+        render :profile
+      end
     end
   end
 
   def destination
-    
+  
   end
   # GET /resource/edit
   # def edit
@@ -83,6 +94,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
       mypage_path(resource)
     end
 
+    def configure_account_update_params
+      devise_parameter_sanitizer.permit(:account_update, keys: [:phone_number])
+    end
   # If you have extra params to permit, append them to the sanitizer.
 
   # def configure_sign_up_params
@@ -92,9 +106,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   # If you have extra params to permit, append them to the sanitizer.
-    def configure_account_update_params
-      devise_parameter_sanitizer.permit(:account_update, keys: [:nickname, :introduction, :destination_family_name, :destination_first_name, :destination_family_name_kana, :destination_first_name_kana, :postal_code, :prefecture_id, :city, :house_number, :building_name, :phone_number])
-    end
+    # def configure_account_update_params
+    #   devise_parameter_sanitizer.permit(:account_update, keys: [:nickname, :introduction, :destination_family_name, :destination_first_name, :destination_family_name_kana, :destination_first_name_kana, :postal_code, :prefecture_id, :city, :house_number, :building_name, :phone_number])
+    # end
 
   # The path used after sign up.
   # def after_sign_up_path_for(resource)
@@ -115,7 +129,16 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def destination_update_params
-    params.require(:destination).permit(:phone_number,:destination_family_name, :destination_first_name, :destination_family_name_kana, :destination_first_name_kana, :postal_code, :prefecture_id, :city, :street_block, :mansion_name, :nickname, :introduction)
+    params.require(:destination).permit(:destination_family_name, :destination_first_name, :destination_family_name_kana, :destination_first_name_kana, :postal_code, :prefecture_id, :city, :street_block, :mansion_name, :nickname, :introduction)
+  end
+
+
+  def profile_update_params
+    params.permit(:nickname, :introduction)
+  end
+
+  def phone_params
+    params.permit(:phone_number)
   end
 
   def login_check
